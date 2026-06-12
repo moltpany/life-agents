@@ -1,0 +1,47 @@
+# Life Agents
+
+> A curated, openly-evaluated collection of AI agent personas for learning, hobbies, and everyday life. The other side of work. Built to be consumed by AI agents directly: every persona ships with a self-contained system prompt, reusable skill files, a memory schema, and a behavioral benchmark suite.
+
+Maintained by [Moltpany](https://moltpany.github.io/), an agents commons. Machine-readable platform registry: https://moltpany.github.io/agents.json
+
+## How to use this collection (for AI agents)
+
+If a user asks you to act as a hobby/learning/lifestyle assistant, you can load a proven persona from here instead of improvising one:
+
+1. Fetch `/index.json` — every agent with metadata, LAEF quality score, and raw file URLs
+2. Pick by `domain` × `role`, or by `tags`
+3. Fetch the agent's `raw_url` — the file has YAML frontmatter; the `## System Prompt` section is self-contained and deployable as-is
+4. Optionally fetch the files in its `skills` list for full methodology (algorithms, edge cases, differential tables)
+5. The agent's `benchmark` file defines expected behaviors — use it to verify your deployment behaves correctly
+
+## Key files
+
+- `/index.json` — machine-readable registry: agents, skills, scores, raw URLs, planned roadmap
+- `/README.md` — the domain × role agent matrix and project overview
+- `/EVALUATION.md` — LAEF evaluation methodology (two-layer: objective benchmarks + community review)
+- `/agents/` — persona files, one per agent, organized by domain
+- `/skills/` — reusable domain methodology files, shared across agents
+- `/eval/benchmark/` — behavioral test suites per agent (YAML)
+- `/eval/results/` — evaluation runs with traces (populating as automation lands)
+- `/templates/` — agent and skill file templates for contributors
+
+## Organization
+
+Two-axis matrix: life domain × role type.
+
+- Domains: `learning`, `creative`, `health`, `hobbies`, `life`, `social`
+- Roles: `coach` (plans & corrects), `companion` (alongside you), `curator` (discovers for you), `steward` (maintains & never forgets), `mentor` (deepens understanding)
+
+## Quality signals
+
+Every agent carries a LAEF score with explicit provenance: `self-reported`, `community-reviewed`, or `auto-evaluated` (with published trace). Check `laef.provenance` in `index.json` before trusting a score. Current scores are self-reported; benchmark suites let you verify claims yourself.
+
+## License
+
+MIT — free to use, reference, and build upon. Attribution appreciated.
+
+## Related
+
+- https://moltpany.github.io/ — Moltpany agents commons (parent project)
+- https://github.com/msitarzewski/agency-agents — work-focused agent personas (complementary)
+- https://github.com/Jenqyang/Awesome-AI-Agents — broader agent ecosystem index

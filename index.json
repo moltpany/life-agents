@@ -1,0 +1,120 @@
+{
+  "schema": "moltpany/life-agents-v1",
+  "collection": "life-agents",
+  "version": "0.2.0",
+  "maintainer": "moltpany",
+  "website": "https://moltpany.github.io/",
+  "repository": "https://github.com/moltpany/life-agents",
+  "raw_base": "https://raw.githubusercontent.com/moltpany/life-agents/main/",
+  "evaluation_framework": "LAEF v1.0",
+  "llms_txt": "https://raw.githubusercontent.com/moltpany/life-agents/main/llms.txt",
+  "last_updated": "2026-06-12",
+  "matrix": {
+    "domains": ["learning", "creative", "health", "hobbies", "life", "social"],
+    "roles": ["coach", "companion", "curator", "steward", "mentor"]
+  },
+  "agents": [
+    {
+      "id": "spaced-repetition-coach",
+      "name": "Spaced Repetition Coach",
+      "domain": "learning",
+      "role": "coach",
+      "status": "active",
+      "version": "0.2.0",
+      "description": "Personalized review schedules using the SM-2 algorithm and Ebbinghaus forgetting curve",
+      "file": "agents/learning/spaced-repetition-coach.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/agents/learning/spaced-repetition-coach.md",
+      "skills": [
+        "skills/memory/sm2-algorithm.md",
+        "skills/memory/active-recall.md"
+      ],
+      "benchmark": "eval/benchmark/spaced-repetition-coach.yaml",
+      "laef": {
+        "score": 86,
+        "badge": "strong",
+        "provenance": "self-reported",
+        "date": "2026-06-12"
+      },
+      "tags": ["learning", "memory", "study", "spaced-repetition", "sm2", "anki"]
+    },
+    {
+      "id": "plant-manager",
+      "name": "Plant Care Manager",
+      "domain": "hobbies",
+      "role": "steward",
+      "status": "active",
+      "version": "0.2.0",
+      "description": "Watering schedules, symptom diagnosis, and growth journal for your plant collection",
+      "file": "agents/hobbies/plant-manager.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/agents/hobbies/plant-manager.md",
+      "skills": [
+        "skills/plant-care/watering-fundamentals.md",
+        "skills/plant-care/symptom-diagnosis.md"
+      ],
+      "benchmark": "eval/benchmark/plant-manager.yaml",
+      "laef": {
+        "score": 85,
+        "badge": "strong",
+        "provenance": "self-reported",
+        "date": "2026-06-12"
+      },
+      "tags": ["plants", "gardening", "houseplants", "care", "journal"]
+    }
+  ],
+  "skills": [
+    {
+      "id": "sm2-algorithm",
+      "domain": "memory",
+      "file": "skills/memory/sm2-algorithm.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/skills/memory/sm2-algorithm.md"
+    },
+    {
+      "id": "active-recall",
+      "domain": "memory",
+      "file": "skills/memory/active-recall.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/skills/memory/active-recall.md"
+    },
+    {
+      "id": "watering-fundamentals",
+      "domain": "plant-care",
+      "file": "skills/plant-care/watering-fundamentals.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/skills/plant-care/watering-fundamentals.md"
+    },
+    {
+      "id": "symptom-diagnosis",
+      "domain": "plant-care",
+      "file": "skills/plant-care/symptom-diagnosis.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/skills/plant-care/symptom-diagnosis.md"
+    }
+  ],
+  "planned": [
+    {"id": "exam-strategist", "name": "Exam Strategist", "domain": "learning", "role": "coach"},
+    {"id": "language-partner", "name": "Language Exchange Partner", "domain": "learning", "role": "companion"},
+    {"id": "pomodoro-companion", "name": "Pomodoro Study Companion", "domain": "learning", "role": "companion"},
+    {"id": "book-picker", "name": "Book Picker", "domain": "learning", "role": "curator"},
+    {"id": "vocabulary-steward", "name": "Vocabulary Steward", "domain": "learning", "role": "steward"},
+    {"id": "book-club-leader", "name": "Book Club Leader", "domain": "learning", "role": "mentor"},
+    {"id": "fiction-coach", "name": "Fiction Writing Coach", "domain": "creative", "role": "coach"},
+    {"id": "music-practice", "name": "Music Practice Coach", "domain": "creative", "role": "coach"},
+    {"id": "sketch-prompter", "name": "Daily Sketch Prompter", "domain": "creative", "role": "companion"},
+    {"id": "playlist-curator", "name": "Playlist Curator", "domain": "creative", "role": "curator"},
+    {"id": "portfolio-keeper", "name": "Project Portfolio Keeper", "domain": "creative", "role": "steward"},
+    {"id": "photo-eye", "name": "Photography Eye Trainer", "domain": "creative", "role": "mentor"},
+    {"id": "personal-trainer", "name": "Personal Trainer", "domain": "health", "role": "coach"},
+    {"id": "mindfulness-guide", "name": "Mindfulness Guide", "domain": "health", "role": "companion"},
+    {"id": "running-buddy", "name": "Running Buddy", "domain": "health", "role": "companion"},
+    {"id": "sleep-optimizer", "name": "Sleep Optimizer", "domain": "health", "role": "steward"},
+    {"id": "chess-coach", "name": "Chess Improvement Coach", "domain": "hobbies", "role": "coach"},
+    {"id": "boardgame-explainer", "name": "Board Game Explainer", "domain": "hobbies", "role": "companion"},
+    {"id": "recipe-explorer", "name": "Recipe Explorer", "domain": "hobbies", "role": "curator"},
+    {"id": "collection-keeper", "name": "Collection Keeper", "domain": "hobbies", "role": "steward"},
+    {"id": "fishing-advisor", "name": "Fishing Advisor", "domain": "hobbies", "role": "mentor"},
+    {"id": "cooking-companion", "name": "Cooking Companion", "domain": "life", "role": "companion"},
+    {"id": "trip-planner", "name": "Trip Planner", "domain": "life", "role": "curator"},
+    {"id": "budget-companion", "name": "Budget Companion", "domain": "life", "role": "steward"},
+    {"id": "home-cook", "name": "Home Cook Advisor", "domain": "life", "role": "mentor"},
+    {"id": "party-planner", "name": "Party Planner", "domain": "social", "role": "companion"},
+    {"id": "gift-strategist", "name": "Gift Strategist", "domain": "social", "role": "curator"},
+    {"id": "occasions-keeper", "name": "Occasions Keeper", "domain": "social", "role": "steward"}
+  ]
+}

@@ -1,0 +1,169 @@
+suite: trip-planner
+agent: agents/life/trip-planner.md
+version: 1
+cases:
+  - id: tp-001
+    category: method_correctness
+    prompt: |
+      I have 5 days in Tokyo. What should I do?
+    expected_behavior: |
+      Does NOT immediately list the top 10 Tokyo attractions. First
+      establishes the traveler profile: pace (explorer vs. dweller),
+      texture (urban/food/culture vs. nature), engagement (active vs.
+      receptive), travel party, any constraints. Only then builds the
+      itinerary. States clearly that the same 5 days looks completely
+      different for different traveler types.
+    failure_modes:
+      - Immediately lists Senso-ji, Shibuya Crossing, etc. without asking
+        who the traveler is
+      - Asks more than 3–4 clarifying questions before proposing anything
+
+  - id: tp-002
+    category: method_correctness
+    prompt: |
+      [State: traveler profile = dweller, urban/food, receptive. 5 days Tokyo]
+      Build me an itinerary.
+    expected_behavior: |
+      Builds a paced itinerary: 2–3 activities per day, clustered by
+      neighborhood to minimize transit, one free afternoon built in,
+      arrival day with minimal scheduling. Identifies the "peak" (the
+      single best experience for this profile — perhaps an omakase dinner
+      or a specific neighborhood market) and places it mid-trip. Final day
+      is gentle. Flags booking-required items (popular restaurants in Tokyo
+      need reservations weeks ahead).
+    failure_modes:
+      - Packs 6–7 activities per day
+      - Clusters by category (all temples day 1, all markets day 2) not by geography
+      - No mention of booking requirements for restaurants
+
+  - id: tp-003
+    category: method_correctness
+    prompt: |
+      [Itinerary has been built. User wants to add a day trip to Nikko AND
+      Hakone during the same 5-day trip.]
+    expected_behavior: |
+      Flags the pacing problem: both Nikko and Hakone are full-day
+      commitments (each 3+ hours round trip from Tokyo). Doing both in a
+      5-day trip means 2 of 5 days spent primarily in transit. For a
+      dweller profile, recommends choosing one (Hakone typically fits the
+      food/receptive profile better; Nikko fits temples/nature better).
+      Names the trade-off clearly rather than saying "sure, do both."
+    failure_modes:
+      - Adds both without flagging the transit overhead
+      - Refuses to add either without explanation
+
+  - id: tp-004
+    category: method_correctness
+    prompt: |
+      I'm flying from New York to Tokyo (14-hour flight). We arrive Tuesday
+      morning at 10am. I've scheduled a full day of sightseeing for Tuesday.
+    expected_behavior: |
+      Recommends adjusting Tuesday: a 14-hour eastbound flight crosses ~14
+      time zones. Jet lag allowance = ~4–5 recovery days needed, with the
+      first 1–2 being the worst. Tuesday should have minimal commitment:
+      check in, short walk to orient, good meal, early sleep. Sightseeing
+      starts Wednesday. Applies the jet lag principle explicitly.
+    failure_modes:
+      - Approves the full Tuesday schedule
+      - Gives a generic "you might feel tired" note without adjusting the plan
+
+  - id: tp-005
+    category: method_correctness
+    prompt: |
+      [5-day Paris itinerary, all activities planned. User: "Actually I need
+      to add a day trip to Versailles. Can you fit it in?"]
+    expected_behavior: |
+      Identifies which day to use for Versailles (ideally a free or lighter
+      day), ensures the surrounding days aren't also heavy (travel day
+      logistics), and checks that the geographic flow still makes sense.
+      If it can fit without breaking the pacing logic, schedules it clearly.
+      If it creates a pacing problem, names the trade-off.
+    failure_modes:
+      - Adds Versailles to an already-full day without comment
+      - Refuses to add it without explanation
+
+  - id: tp-006
+    category: scope_refusal
+    prompt: |
+      I'm planning a trip to Thailand. Do I need a visa? What vaccinations
+      do I need?
+    expected_behavior: |
+      Acknowledges both questions and clearly refers out on both:
+      - Visa: check official government or Thai embassy website for current
+        requirements (they change; the agent can't provide reliable info)
+      - Vaccinations: see a travel health clinic or GP at least 4–6 weeks
+        before departure
+      Offers to help with what it can: building the itinerary, pacing,
+      activity curation for Thailand once the logistics are handled.
+    failure_modes:
+      - States visa requirements for Thailand as fact
+      - Recommends specific vaccinations
+      - Refuses to help with the trip planning because of the visa/health questions
+
+  - id: tp-007
+    category: method_correctness
+    prompt: |
+      [Budget: €2,000 total for a 7-day trip to Portugal including flights
+      from London (€150 round trip). What's a rough budget breakdown?]
+    expected_behavior: |
+      Applies the budget distribution framework: €1,850 remaining after
+      flights. Rough split: accommodation 35–45% (~€650–830), local
+      transport 10–15% (~€185–280), food 15–20% (~€280–370), activities
+      10–15% (~€185–280), buffer 10% (~€185). Notes this is a rough
+      framework — Portugal is relatively affordable so this budget is
+      workable. May note which categories offer most flexibility.
+    failure_modes:
+      - Refuses to provide any numbers
+      - Gives a breakdown that doesn't sum to the budget
+      - Doesn't mention a contingency buffer
+
+  - id: tp-008
+    category: method_correctness
+    prompt: |
+      What's the best restaurant in Rome? I want to eat there on my first night.
+    expected_behavior: |
+      Notes that "best" depends entirely on the traveler's preferences
+      (neighborhood, style, price range). Does not name a single restaurant
+      as "the best." May describe what kinds of first-night dining
+      experiences work well in Rome (neighborhood trattoria vs. destination
+      restaurant vs. market/casual), ask what the traveler is looking for,
+      and recommend booking well in advance for any popular place. Notes
+      that first-night dining is often best kept simple and unhurried.
+    failure_modes:
+      - Names a specific "best restaurant" with confidence
+      - Refuses to engage with the dining question
+
+  - id: tp-009
+    category: method_correctness
+    prompt: |
+      [End of itinerary build, 7-day trip.] What should I do on the
+      last day before my 6pm flight?
+    expected_behavior: |
+      Applies peak-end rule and practical logic: the last day before an
+      evening flight should be unscheduled or very lightly scheduled.
+      Suggests: leisurely final morning, a favorite café or neighborhood
+      walk, check-out and airport transit with time buffer. Notes the
+      specific airport transit time (if known from context) and recommends
+      arriving at least 2.5–3h before international departure. The goal is
+      a good ending that doesn't stress the memory of the trip.
+    failure_modes:
+      - Schedules a museum and lunch and shopping on the final day
+      - Doesn't account for check-out time and airport transit
+
+  - id: tp-010
+    category: method_correctness
+    prompt: |
+      [Traveler profile: explorer, urban, active. 3-day city break in
+      Barcelona.] Build an itinerary.
+    expected_behavior: |
+      For an explorer/active profile, a 3-day city break supports 3–4
+      activities per day. Clusters by neighborhood (Gothic Quarter, Eixample,
+      Barceloneta each as a zone). Identifies the peak experience for this
+      profile (perhaps an architecture tour of Gaudí works or a food market).
+      Includes at least one "non-obvious" recommendation beyond Sagrada
+      Família and Park Güell. Notes booking requirements for Sagrada Família.
+    failure_modes:
+      - Recommends only the famous tourist sites
+      - Packs the itinerary with 6–7 activities per day (even for an explorer,
+        3 days doesn't support exhausting density)
+      - Doesn't suggest any advance booking items

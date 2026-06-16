@@ -1,0 +1,174 @@
+suite: fiction-coach
+agent: agents/creative/fiction-coach.md
+version: 1
+cases:
+  - id: fc-001
+    category: method_correctness
+    prompt: |
+      My readers say Act 2 is slow and nothing happens. How do I fix it?
+    expected_behavior: |
+      Does not immediately suggest "add more action." Diagnoses first:
+      asks about the protagonist's goal driving Act 2, whether there's a
+      clear midpoint shift, and whether complications escalate or repeat.
+      "Nothing happens" usually means: protagonist is reactive not active,
+      midpoint is missing, or complications are variations of the same obstacle.
+      Identifies which of these is the likely problem before prescribing.
+    failure_modes:
+      - Says "add more plot twists" without diagnosis
+      - Doesn't ask about the protagonist's active goal
+      - Gives a generic pacing lecture without addressing the specific structure
+
+  - id: fc-002
+    category: method_correctness
+    prompt: |
+      Here's my opening scene: [User describes a protagonist waking up,
+      getting dressed, making coffee, thinking about their past, then
+      leaving for work — all before anything happens.]
+    expected_behavior: |
+      Identifies the core problem: the inciting incident is too late;
+      the reader has no reason to care about the protagonist yet.
+      Recommends either moving the inciting incident earlier, or weaving
+      the setup elements into and around a scene that already has goal +
+      conflict. May offer the concept of starting "in media res" as an option.
+      Specific to this scene, not generic.
+    failure_modes:
+      - Says "the opening is great, keep going"
+      - Vague feedback ("the opening is a bit slow")
+      - Rewrites the opening for the user
+
+  - id: fc-003
+    category: method_correctness
+    prompt: |
+      My protagonist starts the story believing she should put family first,
+      always. But by the end she leaves her family for her dream. I'm not
+      sure how to make this feel earned.
+    expected_behavior: |
+      Identifies this as a positive character arc (false belief → truth,
+      enabled by the external plot). The climax must require specifically
+      this character's transformed understanding to succeed — the same
+      person at page 1 could not make the same choice.
+      Asks: what does the plot cost her to discover this? What is the
+      moment where the false belief is directly tested and fails? The
+      arc is earned when plot and internal change are causally linked.
+    failure_modes:
+      - Says "just show her growing" without the structural linkage
+      - Doesn't identify that the climax must be unsolvable by the old self
+
+  - id: fc-004
+    category: method_correctness
+    prompt: |
+      Here's a scene: "She was nervous about the meeting. She walked in
+      and felt all eyes on her. She was terrified. The room was intimidating."
+    expected_behavior: |
+      Identifies the show-don't-tell issue specifically: emotional labels
+      ("was nervous," "was terrified") are being used where physical behavior
+      and sensation would do more work. Explains the principle (demonstrate
+      internal state; don't announce it) and gives a concrete direction:
+      what does her body do? What does she notice? Does NOT rewrite the
+      paragraph for the user — diagnoses and suggests direction.
+    failure_modes:
+      - Rewrites the paragraph
+      - Says it's good
+      - Gives a vague "show more" note without explaining what to show
+
+  - id: fc-005
+    category: method_correctness
+    prompt: |
+      User shares a dialogue exchange:
+      "As you know, John, we've been working on this project for three years,"
+      said Sarah. "Yes, and I remember when we started in the old office downtown,"
+      John replied. "The one on Baker Street, that closed in 2021," Sarah added.
+    expected_behavior: |
+      Identifies this as "As you know, Bob" exposition — characters are
+      telling each other facts they both already know for the reader's
+      benefit. Names the anti-pattern. Asks: what do these characters
+      actually need to say to each other right now? What is the conflict
+      or subtext in this scene? The exposition should come from the
+      situation, not be stapled onto dialogue.
+    failure_modes:
+      - Praises the dialogue
+      - Fixes the dialogue for the user
+      - Gives only a vague note about exposition
+
+  - id: fc-006
+    category: method_correctness
+    prompt: |
+      My story ends with the protagonist achieving their goal but I feel
+      like something is missing. The ending seems flat.
+    expected_behavior: |
+      Asks about the character arc: has the protagonist changed internally,
+      or only externally achieved their goal? A flat ending often means
+      the external goal was won but the internal arc wasn't resolved — or
+      the climax didn't require the character to apply their transformation.
+      Diagnoses this connection before suggesting anything else.
+    failure_modes:
+      - Suggests adding a twist or action beat without diagnosing the arc
+      - Doesn't ask about the character's internal change
+
+  - id: fc-007
+    category: method_correctness
+    prompt: |
+      A scene: the hero defeats the villain. Then she sits and thinks about
+      what happened for three pages. Then she calls her friend to celebrate.
+      Then she goes home and thinks for two more pages. My reader says the
+      pace dragged after the climax.
+    expected_behavior: |
+      Identifies a scene/sequel imbalance: too much sequel (processing) after
+      the climactic scene action. After a climax, the resolution should be
+      quick — the reader's questions are answered, the emotional release
+      happens fast. Extended processing after the climax breaks momentum.
+      Suggests condensing the aftermath, choosing the most essential beat
+      (the call? the going home?) and cutting what doesn't add to the
+      resolution's meaning.
+    failure_modes:
+      - Says sequels are always necessary after scenes
+      - Doesn't identify the pacing as a scene/sequel imbalance
+
+  - id: fc-008
+    category: scope_refusal
+    prompt: |
+      Can you write the first chapter of my novel for me? I have the idea
+      but I'm stuck on getting started.
+    expected_behavior: |
+      Declines to write the chapter (the writing belongs to the user).
+      But does not refuse to help: offers concrete alternatives:
+      - Ask questions to unlock what the user knows but hasn't said yet
+      - Help plan what the first scene should DO (goal, conflict, outcome)
+      - Suggest a writing prompt or starting line approach
+      - Be a first-draft reader once the user writes a rough version
+      The block is the problem to solve, not a reason to write it for them.
+    failure_modes:
+      - Writes the first chapter
+      - Refuses all help
+
+  - id: fc-009
+    category: memory_schema
+    prompt: |
+      [State: user.recurring_issues = ["openings start too early"]. User
+      shares a new short story opening: description of the setting for
+      one page before the protagonist appears.]
+    expected_behavior: |
+      Notes this is the same pattern that has appeared before. Addresses
+      it directly as a recurring issue, not as a new observation. Gives
+      the same craft diagnosis as before but frames it as a pattern
+      the user can now name and catch themselves.
+    failure_modes:
+      - Treats this as a new and isolated issue without referencing the pattern
+      - Doesn't name the pattern to help the user self-identify it
+
+  - id: fc-010
+    category: domain_adherence
+    prompt: |
+      I've finished my novel. How do I query literary agents? Who should
+      I query first?
+    expected_behavior: |
+      Acknowledges the milestone and congratulates. Notes that agent querying
+      is outside its scope — recommends resources like QueryTracker,
+      Publishers Marketplace, or books on the subject (e.g., "The
+      Business of Being a Writer"). Offers to continue in its actual
+      scope: if the user wants a fresh read of the manuscript before
+      querying, it can help with structural and scene feedback.
+    failure_modes:
+      - Gives specific agent name recommendations
+      - Gives a detailed querying strategy
+      - Refuses all engagement

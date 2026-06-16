@@ -7,7 +7,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Agents](https://img.shields.io/badge/agents-2_active_/_28_planned-blue.svg)](#the-agent-matrix)
+[![Agents](https://img.shields.io/badge/agents-10_active_/_20_planned-blue.svg)](#the-agent-matrix)
 [![Eval](https://img.shields.io/badge/eval-LAEF_v1.0-purple.svg)](EVALUATION.md)
 
 [The Agent Matrix](#the-agent-matrix) · [For AI Agents](#for-ai-agents) · [Evaluation](#evaluation) · [Contribute](CONTRIBUTING.md) · [Website](https://moltpany.github.io/)
@@ -51,14 +51,14 @@ Life Agents is organized as a two-axis system: **life domain × role type**. Dom
 
 | | 🏋️ Coach | 🤝 Companion | 🔭 Curator | 🗂️ Steward | 🦉 Mentor |
 |---|---|---|---|---|---|
-| **🎓 Learning** | ✅ [Spaced Repetition Coach](agents/learning/spaced-repetition-coach.md) · 💡 Exam Strategist | 💡 Language Partner · 💡 Pomodoro Companion | 💡 Book Picker | 💡 Vocabulary Steward | 💡 Book Club Leader |
-| **🎨 Creative** | 💡 Fiction Writing Coach · 💡 Music Practice Coach | 💡 Daily Sketch Prompter | 💡 Playlist Curator | 💡 Project Portfolio Keeper | 💡 Photography Eye Trainer |
-| **💪 Body & Mind** | 💡 Personal Trainer | 💡 Mindfulness Guide · 💡 Running Buddy | — | 💡 Sleep Optimizer | — |
-| **🌿 Hobbies** | 💡 Chess Improvement Coach | 💡 Board Game Explainer | 💡 Recipe Explorer | ✅ [Plant Care Manager](agents/hobbies/plant-manager.md) · 💡 Collection Keeper | 💡 Fishing Advisor |
-| **🏠 Everyday Life** | — | 💡 Cooking Companion | 💡 Trip Planner | 💡 Budget Companion | 💡 Home Cook Advisor |
+| **🎓 Learning** | ✅ [Spaced Repetition Coach](agents/learning/spaced-repetition-coach.md) · 💡 Exam Strategist | ✅ [Language Partner](agents/learning/language-partner.md) · 💡 Pomodoro Companion | 💡 Book Picker | 💡 Vocabulary Steward | ✅ [Book Club Leader](agents/learning/book-club-leader.md) |
+| **🎨 Creative** | ✅ [Fiction Writing Coach](agents/creative/fiction-coach.md) · 💡 Music Practice Coach | 💡 Daily Sketch Prompter | 💡 Playlist Curator | 💡 Project Portfolio Keeper | 💡 Photography Eye Trainer |
+| **💪 Body & Mind** | ✅ [Personal Trainer](agents/health/personal-trainer.md) | ✅ [Mindfulness Guide](agents/health/mindfulness-guide.md) · 💡 Running Buddy | — | 💡 Sleep Optimizer | — |
+| **🌿 Hobbies** | 💡 Chess Improvement Coach | 💡 Board Game Explainer | ✅ [Recipe Explorer](agents/hobbies/recipe-explorer.md) | ✅ [Plant Care Manager](agents/hobbies/plant-manager.md) · 💡 Collection Keeper | 💡 Fishing Advisor |
+| **🏠 Everyday Life** | — | 💡 Cooking Companion | ✅ [Trip Planner](agents/life/trip-planner.md) | ✅ [Budget Companion](agents/life/budget-companion.md) | 💡 Home Cook Advisor |
 | **💝 Relationships** | — | 💡 Party Planner | 💡 Gift Strategist | 💡 Occasions Keeper | — |
 
-Two cells are filled. Twenty-eight are waiting. Every 💡 is an open invitation — see [CONTRIBUTING.md](CONTRIBUTING.md).
+Ten cells are filled across 5 domains and all 5 role types. Twenty are waiting. Every 💡 is an open invitation — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 

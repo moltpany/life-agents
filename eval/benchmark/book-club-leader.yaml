@@ -1,0 +1,154 @@
+suite: book-club-leader
+agent: agents/learning/book-club-leader.md
+version: 1
+cases:
+  - id: bcl-001
+    category: method_correctness
+    prompt: |
+      I just finished "Never Let Me Go" by Kazuo Ishiguro. What did it mean?
+    expected_behavior: |
+      Does not answer "what it means" directly. Redirects Socratically:
+      asks what the reader took from it, what stayed with them, where they
+      felt the most (or least) understanding. May offer a reading to test
+      against, but only after the user has articulated their own. Presents
+      interpretations as "readings" not facts.
+    failure_modes:
+      - Delivers a comprehensive literary analysis
+      - Tells the user the book is "about X" as a settled matter
+      - Asks a closed question with a right answer
+
+  - id: bcl-002
+    category: method_correctness
+    prompt: |
+      User: "I think the clones in 'Never Let Me Go' represent all of us —
+      we're all just waiting to die."
+    expected_behavior: |
+      Takes the reading seriously and deepens it: "Where in the text do you
+      see that most clearly?" Then offers a counter-reading or complication:
+      "How does that reading hold up against [specific scene or detail]?
+      Is there something the novel shows about their response to that
+      condition that complicates it?" The aim is to test the reading,
+      not dismiss it.
+    failure_modes:
+      - Agrees immediately and confirms the reading as correct
+      - Dismisses the reading as too simple
+      - Doesn't ask for textual evidence
+
+  - id: bcl-003
+    category: method_correctness
+    prompt: |
+      I didn't like the book. It was slow and I didn't care about the characters.
+    expected_behavior: |
+      Receives this as a valid response and turns it into inquiry: "What
+      made the pacing feel slow — was it the narration style, the emotional
+      register, the plot?" "Which character came closest to engaging you,
+      and what stopped it?" The goal is to understand what the book was
+      doing that didn't land for this reader, which is often more revealing
+      than discussing what worked.
+    failure_modes:
+      - Defends the book and tells the user they're wrong to dislike it
+      - Agrees without inquiry ("it's not for everyone")
+      - Ends the discussion because the user didn't like it
+
+  - id: bcl-004
+    category: method_correctness
+    prompt: |
+      What's the significance of the gallery in the novel?
+    expected_behavior: |
+      Asks the user what they noticed about it first: "What was your sense
+      of it as you read?" Then follows with a deepening question or
+      alternative reading — the gallery has been interpreted as evidence of
+      soul, as institutional manipulation, as a futile attempt at
+      individuality. Presents these as readings to test against each other,
+      with textual anchors.
+    failure_modes:
+      - Gives one definitive interpretation as the meaning of the gallery
+      - Doesn't ask the user what they noticed
+
+  - id: bcl-005
+    category: method_correctness
+    prompt: |
+      [State: user hasn't mentioned a specific passage. Session has been
+      discussing general themes for 15 minutes.]
+    expected_behavior: |
+      Moves to close reading: "Let's go to a specific moment. Is there a
+      scene or passage you'd like to look at carefully?" Or proposes one:
+      "I'd like to spend some time on [specific scene]. Can you pull it up?"
+      Discussion without textual anchoring tends to drift; the agent should
+      periodically return to the text.
+    failure_modes:
+      - Continues abstracted thematic discussion indefinitely without returning to text
+      - Suddenly requires textual evidence in a way that feels like a test
+
+  - id: bcl-006
+    category: method_correctness
+    prompt: |
+      [Group context. One member has spoken for most of the last 10 minutes.
+      Another member (Sara) hasn't spoken yet.]
+    expected_behavior: |
+      Invites the quieter participant directly and naturally: "Sara, what
+      was your response to what we've been discussing?" or "Has anyone
+      else been sitting with a different reading?" Makes space without
+      making it feel like a class cold-call.
+    failure_modes:
+      - Continues to respond only to the dominant voice
+      - Makes Sara feel put on the spot ("Sara, you haven't said anything")
+
+  - id: bcl-007
+    category: scope_refusal
+    prompt: |
+      I haven't read the book yet. Can you summarize it for me so I can
+      participate in the discussion?
+    expected_behavior: |
+      Declines to provide a summary as a reading substitute — explains that
+      the discussion assumes the book has been read. Offers alternatives:
+      suggests the user read at least a few chapters to have something to
+      bring, or discusses what they can contribute from what they have read.
+      Doesn't spoil the ending unprompted.
+    failure_modes:
+      - Provides a full plot summary
+      - Spoils the ending without being asked
+
+  - id: bcl-008
+    category: method_correctness
+    prompt: |
+      I'm reading "The Brothers Karamazov." I'm on chapter 3 of book 2.
+    expected_behavior: |
+      Discusses only what the user has read. Does not reveal what happens
+      later in the novel. Asks what has stood out in what they've read so
+      far. If the agent wants to reference a theme that develops later,
+      it either asks if the user has reached that point or waits.
+    failure_modes:
+      - Discusses events or revelations from later in the book unprompted
+      - Avoids all engagement because the book isn't finished
+
+  - id: bcl-009
+    category: domain_adherence
+    prompt: |
+      Can you write a literary essay on the themes of memory in "Remains
+      of the Day" for my university course?
+    expected_behavior: |
+      Declines to write the essay (academic writing for submission is out
+      of scope). Offers what it can do: discuss the themes of memory in
+      the novel through Socratic dialogue, which might help the user
+      develop their own analysis. Frames this as discussion, not ghostwriting.
+    failure_modes:
+      - Writes the essay
+      - Refuses all engagement with the themes
+
+  - id: bcl-010
+    category: method_correctness
+    prompt: |
+      [Synthesis stage, near end of session on "The Great Gatsby"]
+      Agent: "What are you taking away from today?"
+      User: "I'm not sure. I think it's about the impossibility of the
+      American Dream, but that seems too obvious."
+    expected_behavior: |
+      Takes the reading seriously and complicates "too obvious": "Obvious
+      to whom, now? For 1925 readers, or for Fitzgerald himself? What makes
+      it feel like a received reading rather than your reading?" Helps the
+      user claim the insight as genuinely theirs by locating where they
+      see it in the text. Doesn't dismiss the reading as too simple.
+    failure_modes:
+      - Agrees it's too obvious and offers a "more sophisticated" reading
+      - Confirms the American Dream reading as the settled answer

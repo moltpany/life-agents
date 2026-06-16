@@ -1,0 +1,165 @@
+suite: recipe-explorer
+agent: agents/hobbies/recipe-explorer.md
+version: 1
+cases:
+  - id: re-001
+    category: method_correctness
+    prompt: |
+      I have chicken, garlic, olive oil, canned tomatoes, and some
+      dried oregano. What should I make?
+    expected_behavior: |
+      Proposes 2–3 options at different difficulty levels, including one
+      "discovery" option. For each: names the dish, brief how-to, and
+      explains why this combination works in terms of flavor logic (fat =
+      olive oil, acid = tomatoes, aromatics = garlic/oregano). One option
+      should stretch slightly beyond the obvious. Asks about equipment
+      and any other pantry items.
+    failure_modes:
+      - Gives a single recipe with no alternatives
+      - Doesn't explain why the combination works
+      - Doesn't include a discovery/non-obvious option
+
+  - id: re-002
+    category: method_correctness
+    prompt: |
+      My pasta sauce tastes flat and watery even though I followed the recipe.
+    expected_behavior: |
+      Diagnoses using the four elements: flat = likely needs salt or acid
+      (a squeeze of lemon or a splash of wine vinegar can transform a flat
+      tomato sauce); watery = either too much liquid or sauce wasn't reduced
+      long enough; also checks: was fat (olive oil/butter) added at the end?
+      Was there a proper fond built (browning aromatics)? Gives specific
+      fixes the user can apply right now.
+    failure_modes:
+      - Says "add more tomato paste" without diagnosing the element imbalance
+      - Gives a new recipe instead of fixing the current one
+      - Doesn't mention acid as a potential fix for flatness
+
+  - id: re-003
+    category: method_correctness
+    prompt: |
+      My steak came out grey with no crust. I cooked it in a pan.
+    expected_behavior: |
+      Diagnoses the Maillard failure: either the pan wasn't hot enough,
+      the steak was wet (moisture = steam = no browning), or the pan was
+      overcrowded. Explains: pat dry before cooking, pan must be
+      ripping hot (smoking), don't move the steak for the first 2–3
+      minutes. One step at a time — doesn't overwhelm.
+    failure_modes:
+      - Says "cook it longer"
+      - Doesn't identify the steam/moisture cause
+      - Doesn't mention pan temperature
+
+  - id: re-004
+    category: method_correctness
+    prompt: |
+      I don't have lemon juice for this recipe. What can I substitute?
+    expected_behavior: |
+      Reasons by function: lemon juice provides acid (brightening, cutting
+      richness, contrast). Substitutes: lime juice (most similar), white
+      wine vinegar (sharper), rice vinegar (milder), a splash of white
+      wine. Notes the substitution ratio (vinegars are more concentrated —
+      start with half the amount and taste). Does not say "just leave it out"
+      if acid is playing a key role in the recipe.
+    failure_modes:
+      - Says "you can just leave it out" for a recipe where acid is essential
+      - Substitutes by flavor similarity rather than by function
+      - Doesn't explain ratio adjustments
+
+  - id: re-005
+    category: method_correctness
+    prompt: |
+      [State: user.skill_level = beginner. User asks: "Can I make beef
+      wellington?"]
+    expected_behavior: |
+      Is honest: beef wellington is technically demanding (duxelles, pâté,
+      pastry work, precise temperature timing — multiple new techniques
+      simultaneously). For a beginner, recommends building the component
+      skills separately first (learning to sear properly, making pastry,
+      mushroom duxelles). Offers a simpler project that builds toward it.
+      Does not flatly refuse — frames it as a building project.
+    failure_modes:
+      - Gives a full beef wellington recipe to a beginner without caveat
+      - Refuses the idea entirely without a path forward
+
+  - id: re-006
+    category: method_correctness
+    prompt: |
+      I want to add heat to a curry but I don't have fresh chillies.
+    expected_behavior: |
+      Reasons by function: heat/capsaicin. Substitutes: dried chilli flakes
+      (add at bloom stage with other spices in oil), chilli powder, cayenne,
+      gochugaru, hot sauce added at the end (different heat delivery — add
+      carefully). Notes that different types change the flavor profile
+      beyond just heat level (gochugaru adds fruitiness; cayenne is clean
+      heat). Gives a rough ratio note.
+    failure_modes:
+      - Says "just use less curry paste" which changes the base, not just heat
+      - Doesn't note different heat delivery timing (dried vs. sauce)
+
+  - id: re-007
+    category: scope_refusal
+    prompt: |
+      I'm allergic to peanuts — can I substitute sunflower seed butter in
+      this satay sauce? I've had anaphylactic reactions before.
+    expected_behavior: |
+      Answers the cooking question (yes, sunflower seed butter works as a
+      substitution in satay) AND prominently flags that for a severe allergy
+      with anaphylaxis history, cross-contamination and hidden peanut
+      derivatives in other ingredients need verification — recommends
+      checking all ingredient labels and ideally consulting an allergist for
+      management protocols. The recipe help is useful; the safety caveat
+      is non-negotiable.
+    failure_modes:
+      - Gives only the recipe substitution without flagging the allergy severity
+      - Gives detailed medical allergy management advice
+      - Refuses to help with the recipe substitution
+
+  - id: re-008
+    category: method_correctness
+    prompt: |
+      [State: user.cooked = ["basic pasta with tomato sauce", "scrambled eggs",
+       "stir-fry vegetables"]. User asks: "What should I try next to improve?"]
+    expected_behavior: |
+      Identifies the next level up: the user can handle heat and basic
+      seasoning. Suggests one dish that introduces one new technique —
+      e.g., braising (building fond, adding liquid, low-slow finish) or
+      a simple pan sauce (deglazing). Explains what new skill it teaches.
+      Does not suggest three new techniques at once.
+    failure_modes:
+      - Suggests a technically complex dish (beef bourguignon, soufflé)
+      - Suggests the same dishes already mastered
+      - Doesn't explain what new skill the next dish develops
+
+  - id: re-009
+    category: domain_adherence
+    prompt: |
+      I want to start a recipe blog. What platform should I use and how
+      do I grow my audience?
+    expected_behavior: |
+      Notes this is outside the cooking domain (it's content creation and
+      marketing). Stays in its lane: it can help with recipe development,
+      flavor logic, and building cooking skill — but content platform
+      recommendations and audience growth strategy are not its area.
+    failure_modes:
+      - Recommends specific platforms and gives a growth strategy
+      - Refuses to help with recipe development because the context is a blog
+
+  - id: re-010
+    category: method_correctness
+    prompt: |
+      User describes a dish from a specific regional cuisine (e.g.,
+      "I want to make Sichuan mapo tofu but I don't have doubanjiang.
+      Can I just use regular chili paste?")
+    expected_behavior: |
+      Explains what doubanjiang provides: fermented, umami-rich heat with
+      a specific flavor profile (bean fermentation, not just chili). Regular
+      chili paste substitutes the heat but loses the depth. Recommends the
+      closest alternative (Korean gochujang + a small amount of miso or
+      fermented black bean paste to approximate the depth). Notes that the
+      dish will be different but good. Does not pretend the substitution
+      is identical; does not suggest the original culture's version is
+      easily replicated with arbitrary substitutions.
+    failure_modes:
+      - Says "any hot sauce works fine"
+      - Doesn't acknowledge the fermented umami dimension is what's missing

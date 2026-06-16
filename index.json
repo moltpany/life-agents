@@ -1,14 +1,14 @@
 {
   "schema": "moltpany/life-agents-v1",
   "collection": "life-agents",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "maintainer": "moltpany",
   "website": "https://moltpany.github.io/",
   "repository": "https://github.com/moltpany/life-agents",
   "raw_base": "https://raw.githubusercontent.com/moltpany/life-agents/main/",
   "evaluation_framework": "LAEF v1.0",
   "llms_txt": "https://raw.githubusercontent.com/moltpany/life-agents/main/llms.txt",
-  "last_updated": "2026-06-12",
+  "last_updated": "2026-06-16",
   "matrix": {
     "domains": ["learning", "creative", "health", "hobbies", "life", "social"],
     "roles": ["coach", "companion", "curator", "steward", "mentor"]
@@ -38,6 +38,114 @@
       "tags": ["learning", "memory", "study", "spaced-repetition", "sm2", "anki"]
     },
     {
+      "id": "language-partner",
+      "name": "Language Exchange Partner",
+      "domain": "learning",
+      "role": "companion",
+      "status": "active",
+      "version": "0.1.0",
+      "description": "Warm conversation partner who practices your target language using CLT methods and corrective feedback",
+      "file": "agents/learning/language-partner.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/agents/learning/language-partner.md",
+      "skills": [
+        "skills/language-learning/communicative-approach.md"
+      ],
+      "benchmark": "eval/benchmark/language-partner.yaml",
+      "laef": {
+        "score": 83,
+        "badge": "strong",
+        "provenance": "self-reported",
+        "date": "2026-06-16"
+      },
+      "tags": ["language-learning", "speaking", "conversation", "fluency", "pronunciation"]
+    },
+    {
+      "id": "book-club-leader",
+      "name": "Book Club Leader",
+      "domain": "learning",
+      "role": "mentor",
+      "status": "active",
+      "version": "0.1.0",
+      "description": "Socratic reading companion who leads discussions that open the text rather than close it",
+      "file": "agents/learning/book-club-leader.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/agents/learning/book-club-leader.md",
+      "skills": [],
+      "benchmark": "eval/benchmark/book-club-leader.yaml",
+      "laef": {
+        "score": 82,
+        "badge": "strong",
+        "provenance": "self-reported",
+        "date": "2026-06-16"
+      },
+      "tags": ["reading", "books", "discussion", "socratic", "literary-analysis", "book-club"]
+    },
+    {
+      "id": "fiction-coach",
+      "name": "Fiction Writing Coach",
+      "domain": "creative",
+      "role": "coach",
+      "status": "active",
+      "version": "0.1.0",
+      "description": "Sharp writing coach who diagnoses story problems and gives scene-level feedback grounded in craft",
+      "file": "agents/creative/fiction-coach.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/agents/creative/fiction-coach.md",
+      "skills": [
+        "skills/creative-writing/story-structure.md"
+      ],
+      "benchmark": "eval/benchmark/fiction-coach.yaml",
+      "laef": {
+        "score": 81,
+        "badge": "strong",
+        "provenance": "self-reported",
+        "date": "2026-06-16"
+      },
+      "tags": ["writing", "fiction", "storytelling", "craft", "novel", "short-story"]
+    },
+    {
+      "id": "personal-trainer",
+      "name": "Personal Trainer",
+      "domain": "health",
+      "role": "coach",
+      "status": "active",
+      "version": "0.1.0",
+      "description": "Evidence-based training coach who programs progressive overload and tracks your lifts",
+      "file": "agents/health/personal-trainer.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/agents/health/personal-trainer.md",
+      "skills": [
+        "skills/fitness/progressive-overload.md"
+      ],
+      "benchmark": "eval/benchmark/personal-trainer.yaml",
+      "laef": {
+        "score": 84,
+        "badge": "strong",
+        "provenance": "self-reported",
+        "date": "2026-06-16"
+      },
+      "tags": ["fitness", "strength", "training", "progressive-overload", "workout", "health"]
+    },
+    {
+      "id": "mindfulness-guide",
+      "name": "Mindfulness Guide",
+      "domain": "health",
+      "role": "companion",
+      "status": "active",
+      "version": "0.1.0",
+      "description": "Calm companion who guides MBSR-based meditation sessions and supports a daily informal practice",
+      "file": "agents/health/mindfulness-guide.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/agents/health/mindfulness-guide.md",
+      "skills": [
+        "skills/mindfulness/mbsr-framework.md"
+      ],
+      "benchmark": "eval/benchmark/mindfulness-guide.yaml",
+      "laef": {
+        "score": 82,
+        "badge": "strong",
+        "provenance": "self-reported",
+        "date": "2026-06-16"
+      },
+      "tags": ["mindfulness", "meditation", "stress", "mbsr", "wellbeing", "presence"]
+    },
+    {
       "id": "plant-manager",
       "name": "Plant Care Manager",
       "domain": "hobbies",
@@ -59,6 +167,72 @@
         "date": "2026-06-12"
       },
       "tags": ["plants", "gardening", "houseplants", "care", "journal"]
+    },
+    {
+      "id": "recipe-explorer",
+      "name": "Recipe Explorer",
+      "domain": "hobbies",
+      "role": "curator",
+      "status": "active",
+      "version": "0.1.0",
+      "description": "Culinary curator who discovers what to cook with what you have and explains the flavor logic",
+      "file": "agents/hobbies/recipe-explorer.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/agents/hobbies/recipe-explorer.md",
+      "skills": [
+        "skills/cooking/flavor-building.md"
+      ],
+      "benchmark": "eval/benchmark/recipe-explorer.yaml",
+      "laef": {
+        "score": 80,
+        "badge": "strong",
+        "provenance": "self-reported",
+        "date": "2026-06-16"
+      },
+      "tags": ["cooking", "recipes", "food", "flavor", "ingredients", "cuisine", "technique"]
+    },
+    {
+      "id": "budget-companion",
+      "name": "Budget Companion",
+      "domain": "life",
+      "role": "steward",
+      "status": "active",
+      "version": "0.1.0",
+      "description": "No-shame budget steward who builds zero-based budgets and tracks every dollar with you",
+      "file": "agents/life/budget-companion.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/agents/life/budget-companion.md",
+      "skills": [
+        "skills/finance/envelope-budgeting.md"
+      ],
+      "benchmark": "eval/benchmark/budget-companion.yaml",
+      "laef": {
+        "score": 84,
+        "badge": "strong",
+        "provenance": "self-reported",
+        "date": "2026-06-16"
+      },
+      "tags": ["budgeting", "personal-finance", "spending", "savings", "money", "tracking"]
+    },
+    {
+      "id": "trip-planner",
+      "name": "Trip Planner",
+      "domain": "life",
+      "role": "curator",
+      "status": "active",
+      "version": "0.1.0",
+      "description": "Thoughtful travel curator who builds interest-matched, well-paced itineraries",
+      "file": "agents/life/trip-planner.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/agents/life/trip-planner.md",
+      "skills": [
+        "skills/travel/itinerary-design.md"
+      ],
+      "benchmark": "eval/benchmark/trip-planner.yaml",
+      "laef": {
+        "score": 80,
+        "badge": "strong",
+        "provenance": "self-reported",
+        "date": "2026-06-16"
+      },
+      "tags": ["travel", "trip-planning", "itinerary", "holiday", "destinations"]
     }
   ],
   "skills": [
@@ -75,6 +249,24 @@
       "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/skills/memory/active-recall.md"
     },
     {
+      "id": "communicative-approach",
+      "domain": "language-learning",
+      "file": "skills/language-learning/communicative-approach.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/skills/language-learning/communicative-approach.md"
+    },
+    {
+      "id": "progressive-overload",
+      "domain": "fitness",
+      "file": "skills/fitness/progressive-overload.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/skills/fitness/progressive-overload.md"
+    },
+    {
+      "id": "mbsr-framework",
+      "domain": "mindfulness",
+      "file": "skills/mindfulness/mbsr-framework.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/skills/mindfulness/mbsr-framework.md"
+    },
+    {
       "id": "watering-fundamentals",
       "domain": "plant-care",
       "file": "skills/plant-care/watering-fundamentals.md",
@@ -85,33 +277,49 @@
       "domain": "plant-care",
       "file": "skills/plant-care/symptom-diagnosis.md",
       "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/skills/plant-care/symptom-diagnosis.md"
+    },
+    {
+      "id": "story-structure",
+      "domain": "creative-writing",
+      "file": "skills/creative-writing/story-structure.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/skills/creative-writing/story-structure.md"
+    },
+    {
+      "id": "flavor-building",
+      "domain": "cooking",
+      "file": "skills/cooking/flavor-building.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/skills/cooking/flavor-building.md"
+    },
+    {
+      "id": "envelope-budgeting",
+      "domain": "finance",
+      "file": "skills/finance/envelope-budgeting.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/skills/finance/envelope-budgeting.md"
+    },
+    {
+      "id": "itinerary-design",
+      "domain": "travel",
+      "file": "skills/travel/itinerary-design.md",
+      "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/skills/travel/itinerary-design.md"
     }
   ],
   "planned": [
     {"id": "exam-strategist", "name": "Exam Strategist", "domain": "learning", "role": "coach"},
-    {"id": "language-partner", "name": "Language Exchange Partner", "domain": "learning", "role": "companion"},
     {"id": "pomodoro-companion", "name": "Pomodoro Study Companion", "domain": "learning", "role": "companion"},
     {"id": "book-picker", "name": "Book Picker", "domain": "learning", "role": "curator"},
     {"id": "vocabulary-steward", "name": "Vocabulary Steward", "domain": "learning", "role": "steward"},
-    {"id": "book-club-leader", "name": "Book Club Leader", "domain": "learning", "role": "mentor"},
-    {"id": "fiction-coach", "name": "Fiction Writing Coach", "domain": "creative", "role": "coach"},
     {"id": "music-practice", "name": "Music Practice Coach", "domain": "creative", "role": "coach"},
     {"id": "sketch-prompter", "name": "Daily Sketch Prompter", "domain": "creative", "role": "companion"},
     {"id": "playlist-curator", "name": "Playlist Curator", "domain": "creative", "role": "curator"},
     {"id": "portfolio-keeper", "name": "Project Portfolio Keeper", "domain": "creative", "role": "steward"},
     {"id": "photo-eye", "name": "Photography Eye Trainer", "domain": "creative", "role": "mentor"},
-    {"id": "personal-trainer", "name": "Personal Trainer", "domain": "health", "role": "coach"},
-    {"id": "mindfulness-guide", "name": "Mindfulness Guide", "domain": "health", "role": "companion"},
     {"id": "running-buddy", "name": "Running Buddy", "domain": "health", "role": "companion"},
     {"id": "sleep-optimizer", "name": "Sleep Optimizer", "domain": "health", "role": "steward"},
     {"id": "chess-coach", "name": "Chess Improvement Coach", "domain": "hobbies", "role": "coach"},
     {"id": "boardgame-explainer", "name": "Board Game Explainer", "domain": "hobbies", "role": "companion"},
-    {"id": "recipe-explorer", "name": "Recipe Explorer", "domain": "hobbies", "role": "curator"},
     {"id": "collection-keeper", "name": "Collection Keeper", "domain": "hobbies", "role": "steward"},
     {"id": "fishing-advisor", "name": "Fishing Advisor", "domain": "hobbies", "role": "mentor"},
     {"id": "cooking-companion", "name": "Cooking Companion", "domain": "life", "role": "companion"},
-    {"id": "trip-planner", "name": "Trip Planner", "domain": "life", "role": "curator"},
-    {"id": "budget-companion", "name": "Budget Companion", "domain": "life", "role": "steward"},
     {"id": "home-cook", "name": "Home Cook Advisor", "domain": "life", "role": "mentor"},
     {"id": "party-planner", "name": "Party Planner", "domain": "social", "role": "companion"},
     {"id": "gift-strategist", "name": "Gift Strategist", "domain": "social", "role": "curator"},

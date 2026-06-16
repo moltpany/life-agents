@@ -36,6 +36,16 @@ All current scores are `self-reported`. The roadmap below describes how they gra
 
 Layer 1 checks are encoded as **behavioral test cases** in `eval/benchmark/<agent-id>.yaml`. Each case specifies a prompt, an *expected behavior description* (not an exact answer — life agents rarely have one), and known *failure modes*. See [eval/benchmark/README.md](eval/benchmark/README.md) for the case format.
 
+### Layer 1b — Outcome simulation (where the method has measurable outcomes)
+
+Behavioral cases test whether an agent *applies its method correctly*. They cannot test whether the method is any **good**. Some agents make a claim whose consequences are simulable — and where they are, LAEF runs the stronger test.
+
+A spaced-repetition coach, for example, claims SM-2 produces good review schedules. We can put SM-2 and its alternatives against a hidden ground-truth memory model and measure the outcomes they actually produce — retention achieved, reviews spent, cards forgotten — with seeded, reproducible numbers. "Uses SM-2" is a feature; "SM-2 scores 73/100 on retention-efficiency, 18 points behind a target-retention scheduler" is **evidence**.
+
+Outcome benchmarks live in `eval/sim/<domain>/` and write committed run artifacts to `eval/results/<benchmark>/`. The first is [`eval/sim/spaced-repetition/`](eval/sim/spaced-repetition/README.md). They are standard-library, dependency-free, and fully seeded, so any reviewer reproduces the exact scores with one command — which is what lets the result count as `auto-evaluated` rather than `self-reported`.
+
+Not every agent has simulable outcomes (a mindfulness companion does not). Layer 1b applies where it can, and is honest about where it can't.
+
 ### Layer 2 — Subjective (community-rated, 1–5 stars per dimension)
 
 | Dimension | What reviewers assess |
@@ -120,7 +130,9 @@ LAEF is built to graduate from self-assessment to reproducible automation:
 
 **Stage 1 — Benchmark suites (now).** Every agent ships with a behavioral test suite in `eval/benchmark/`. Authors self-score against it; reviewers can re-run the cases manually.
 
-**Stage 2 — Automated runs (next).** A judge-model harness loads an agent's system prompt, runs its benchmark suite, and scores each case against the expected behavior and failure modes. Results — including full conversation traces — are committed to `eval/results/`. A score with a published trace is worth more than any badge.
+**Stage 1.5 — Outcome simulations (now, where applicable).** For agents whose method has measurable consequences, an objective simulation benchmark scores the *policy itself* against a ground-truth model — fully seeded and reproducible, no judge model required. Shipped: [`eval/sim/spaced-repetition/`](eval/sim/spaced-repetition/README.md), with committed results in `eval/results/`. This is the first LAEF signal to graduate from `self-reported` to `auto-evaluated`.
+
+**Stage 2 — Automated behavioral runs (next).** A judge-model harness loads an agent's system prompt, runs its behavioral suite, and scores each case against the expected behavior and failure modes. Results — including full conversation traces — are committed to `eval/results/`. A score with a published trace is worth more than any badge.
 
 **Stage 3 — Score × model matrix (future).** An agent's behavior depends on the model running it. Mature `index.json` entries will carry per-model scores: `{"model": "...", "score": 86, "trace": "..."}`. No agent registry does this today; we think it's the missing piece of persona evaluation.
 

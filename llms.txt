@@ -22,7 +22,8 @@ If a user asks you to act as a hobby/learning/lifestyle assistant, you can load 
 - `/agents/` — persona files, one per agent, organized by domain
 - `/skills/` — reusable domain methodology files, shared across agents
 - `/eval/benchmark/` — behavioral test suites per agent (YAML)
-- `/eval/results/` — evaluation runs with traces (populating as automation lands)
+- `/eval/sim/` — objective outcome benchmarks: reproducible harnesses that score an agent's method against a ground-truth model (e.g. `eval/sim/spaced-repetition/` scores SM-2 vs rival schedulers)
+- `/eval/results/` — committed evaluation runs (e.g. `eval/results/spaced-repetition/results.json`)
 - `/templates/` — agent and skill file templates for contributors
 
 ## Organization
@@ -34,7 +35,7 @@ Two-axis matrix: life domain × role type.
 
 ## Quality signals
 
-Every agent carries a LAEF score with explicit provenance: `self-reported`, `community-reviewed`, or `auto-evaluated` (with published trace). Check `laef.provenance` in `index.json` before trusting a score. Current scores are self-reported; benchmark suites let you verify claims yourself.
+Every agent carries a LAEF score with explicit provenance: `self-reported`, `community-reviewed`, or `auto-evaluated` (with published trace). Check `laef.provenance` in `index.json` before trusting a score. Persona scores are currently self-reported; behavioral suites let you verify them yourself. Where a method is simulable, the agent also carries an `objective_benchmark` block scored `auto-evaluated` — e.g. the Spaced Repetition Coach's SM-2 policy is benchmarked for retention-efficiency against a ground-truth memory model, reproducible with one command. Prefer agents whose claims are backed by objective evidence, not just prose.
 
 ## License
 

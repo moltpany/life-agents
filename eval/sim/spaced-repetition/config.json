@@ -1,0 +1,41 @@
+{
+  "horizon_days": 180,
+  "deck_size": 120,
+  "new_per_day": 6,
+  "target_r": 0.9,
+  "deck_seed": 7,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "model": {
+    "s0_base": 10.0,
+    "s0_floor": 2.0,
+    "base_growth": 1.5,
+    "spacing_bonus": 1.6,
+    "s_fail_base": 4.0,
+    "s_fail_floor": 1.0
+  }
+}

@@ -1,0 +1,485 @@
+{
+  "deck_seed": 7,
+  "cards": [
+    {
+      "id": "c000",
+      "difficulty": 4.4
+    },
+    {
+      "id": "c001",
+      "difficulty": 3.3
+    },
+    {
+      "id": "c002",
+      "difficulty": 6.0
+    },
+    {
+      "id": "c003",
+      "difficulty": 2.6
+    },
+    {
+      "id": "c004",
+      "difficulty": 5.4
+    },
+    {
+      "id": "c005",
+      "difficulty": 4.6
+    },
+    {
+      "id": "c006",
+      "difficulty": 2.4
+    },
+    {
+      "id": "c007",
+      "difficulty": 5.3
+    },
+    {
+      "id": "c008",
+      "difficulty": 2.2
+    },
+    {
+      "id": "c009",
+      "difficulty": 5.0
+    },
+    {
+      "id": "c010",
+      "difficulty": 2.6
+    },
+    {
+      "id": "c011",
+      "difficulty": 2.8
+    },
+    {
+      "id": "c012",
+      "difficulty": 4.9
+    },
+    {
+      "id": "c013",
+      "difficulty": 7.2
+    },
+    {
+      "id": "c014",
+      "difficulty": 3.1
+    },
+    {
+      "id": "c015",
+      "difficulty": 3.8
+    },
+    {
+      "id": "c016",
+      "difficulty": 5.9
+    },
+    {
+      "id": "c017",
+      "difficulty": 8.5
+    },
+    {
+      "id": "c018",
+      "difficulty": 5.6
+    },
+    {
+      "id": "c019",
+      "difficulty": 4.8
+    },
+    {
+      "id": "c020",
+      "difficulty": 9.0
+    },
+    {
+      "id": "c021",
+      "difficulty": 2.3
+    },
+    {
+      "id": "c022",
+      "difficulty": 7.5
+    },
+    {
+      "id": "c023",
+      "difficulty": 4.2
+    },
+    {
+      "id": "c024",
+      "difficulty": 3.3
+    },
+    {
+      "id": "c025",
+      "difficulty": 3.1
+    },
+    {
+      "id": "c026",
+      "difficulty": 4.3
+    },
+    {
+      "id": "c027",
+      "difficulty": 7.1
+    },
+    {
+      "id": "c028",
+      "difficulty": 3.6
+    },
+    {
+      "id": "c029",
+      "difficulty": 5.7
+    },
+    {
+      "id": "c030",
+      "difficulty": 6.0
+    },
+    {
+      "id": "c031",
+      "difficulty": 4.7
+    },
+    {
+      "id": "c032",
+      "difficulty": 5.5
+    },
+    {
+      "id": "c033",
+      "difficulty": 2.5
+    },
+    {
+      "id": "c034",
+      "difficulty": 2.5
+    },
+    {
+      "id": "c035",
+      "difficulty": 3.7
+    },
+    {
+      "id": "c036",
+      "difficulty": 6.2
+    },
+    {
+      "id": "c037",
+      "difficulty": 4.9
+    },
+    {
+      "id": "c038",
+      "difficulty": 4.4
+    },
+    {
+      "id": "c039",
+      "difficulty": 5.7
+    },
+    {
+      "id": "c040",
+      "difficulty": 5.0
+    },
+    {
+      "id": "c041",
+      "difficulty": 4.3
+    },
+    {
+      "id": "c042",
+      "difficulty": 7.0
+    },
+    {
+      "id": "c043",
+      "difficulty": 6.3
+    },
+    {
+      "id": "c044",
+      "difficulty": 4.0
+    },
+    {
+      "id": "c045",
+      "difficulty": 5.6
+    },
+    {
+      "id": "c046",
+      "difficulty": 5.4
+    },
+    {
+      "id": "c047",
+      "difficulty": 7.6
+    },
+    {
+      "id": "c048",
+      "difficulty": 6.5
+    },
+    {
+      "id": "c049",
+      "difficulty": 4.2
+    },
+    {
+      "id": "c050",
+      "difficulty": 9.1
+    },
+    {
+      "id": "c051",
+      "difficulty": 3.1
+    },
+    {
+      "id": "c052",
+      "difficulty": 4.9
+    },
+    {
+      "id": "c053",
+      "difficulty": 6.7
+    },
+    {
+      "id": "c054",
+      "difficulty": 3.3
+    },
+    {
+      "id": "c055",
+      "difficulty": 5.2
+    },
+    {
+      "id": "c056",
+      "difficulty": 2.2
+    },
+    {
+      "id": "c057",
+      "difficulty": 6.1
+    },
+    {
+      "id": "c058",
+      "difficulty": 6.7
+    },
+    {
+      "id": "c059",
+      "difficulty": 5.6
+    },
+    {
+      "id": "c060",
+      "difficulty": 7.6
+    },
+    {
+      "id": "c061",
+      "difficulty": 4.4
+    },
+    {
+      "id": "c062",
+      "difficulty": 6.3
+    },
+    {
+      "id": "c063",
+      "difficulty": 5.7
+    },
+    {
+      "id": "c064",
+      "difficulty": 5.7
+    },
+    {
+      "id": "c065",
+      "difficulty": 5.1
+    },
+    {
+      "id": "c066",
+      "difficulty": 7.3
+    },
+    {
+      "id": "c067",
+      "difficulty": 8.4
+    },
+    {
+      "id": "c068",
+      "difficulty": 5.1
+    },
+    {
+      "id": "c069",
+      "difficulty": 6.1
+    },
+    {
+      "id": "c070",
+      "difficulty": 2.5
+    },
+    {
+      "id": "c071",
+      "difficulty": 6.3
+    },
+    {
+      "id": "c072",
+      "difficulty": 6.0
+    },
+    {
+      "id": "c073",
+      "difficulty": 9.4
+    },
+    {
+      "id": "c074",
+      "difficulty": 7.2
+    },
+    {
+      "id": "c075",
+      "difficulty": 4.2
+    },
+    {
+      "id": "c076",
+      "difficulty": 4.7
+    },
+    {
+      "id": "c077",
+      "difficulty": 6.1
+    },
+    {
+      "id": "c078",
+      "difficulty": 1.9
+    },
+    {
+      "id": "c079",
+      "difficulty": 5.1
+    },
+    {
+      "id": "c080",
+      "difficulty": 3.5
+    },
+    {
+      "id": "c081",
+      "difficulty": 3.1
+    },
+    {
+      "id": "c082",
+      "difficulty": 2.5
+    },
+    {
+      "id": "c083",
+      "difficulty": 6.8
+    },
+    {
+      "id": "c084",
+      "difficulty": 3.2
+    },
+    {
+      "id": "c085",
+      "difficulty": 4.0
+    },
+    {
+      "id": "c086",
+      "difficulty": 4.8
+    },
+    {
+      "id": "c087",
+      "difficulty": 7.6
+    },
+    {
+      "id": "c088",
+      "difficulty": 2.7
+    },
+    {
+      "id": "c089",
+      "difficulty": 5.0
+    },
+    {
+      "id": "c090",
+      "difficulty": 5.5
+    },
+    {
+      "id": "c091",
+      "difficulty": 7.7
+    },
+    {
+      "id": "c092",
+      "difficulty": 7.1
+    },
+    {
+      "id": "c093",
+      "difficulty": 7.5
+    },
+    {
+      "id": "c094",
+      "difficulty": 4.2
+    },
+    {
+      "id": "c095",
+      "difficulty": 4.9
+    },
+    {
+      "id": "c096",
+      "difficulty": 4.6
+    },
+    {
+      "id": "c097",
+      "difficulty": 7.7
+    },
+    {
+      "id": "c098",
+      "difficulty": 8.6
+    },
+    {
+      "id": "c099",
+      "difficulty": 3.3
+    },
+    {
+      "id": "c100",
+      "difficulty": 3.5
+    },
+    {
+      "id": "c101",
+      "difficulty": 3.9
+    },
+    {
+      "id": "c102",
+      "difficulty": 3.9
+    },
+    {
+      "id": "c103",
+      "difficulty": 5.2
+    },
+    {
+      "id": "c104",
+      "difficulty": 5.7
+    },
+    {
+      "id": "c105",
+      "difficulty": 4.1
+    },
+    {
+      "id": "c106",
+      "difficulty": 1.4
+    },
+    {
+      "id": "c107",
+      "difficulty": 4.9
+    },
+    {
+      "id": "c108",
+      "difficulty": 4.6
+    },
+    {
+      "id": "c109",
+      "difficulty": 5.6
+    },
+    {
+      "id": "c110",
+      "difficulty": 8.5
+    },
+    {
+      "id": "c111",
+      "difficulty": 6.3
+    },
+    {
+      "id": "c112",
+      "difficulty": 5.3
+    },
+    {
+      "id": "c113",
+      "difficulty": 5.9
+    },
+    {
+      "id": "c114",
+      "difficulty": 6.2
+    },
+    {
+      "id": "c115",
+      "difficulty": 2.4
+    },
+    {
+      "id": "c116",
+      "difficulty": 7.9
+    },
+    {
+      "id": "c117",
+      "difficulty": 6.9
+    },
+    {
+      "id": "c118",
+      "difficulty": 7.6
+    },
+    {
+      "id": "c119",
+      "difficulty": 7.0
+    }
+  ]
+}

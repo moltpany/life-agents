@@ -1,8 +1,23 @@
 # Evaluation Results
 
-This directory holds evaluation run artifacts: per-agent scores **with full conversation traces**.
+This directory holds evaluation run artifacts: reproducible scores, with the data behind them.
 
-It is currently empty by design. All scores in [`index.json`](../../index.json) are `self-reported` (see [EVALUATION.md](../../EVALUATION.md) for provenance levels). When the automated judge harness lands (LAEF roadmap stage 2), runs will be committed here as:
+## Objective outcome benchmarks (live)
+
+Simulation benchmarks from [`eval/sim/`](../sim/) write their committed results here. These are `auto-evaluated`: standard-library, seeded, and reproducible with one command — no judge model, no human in the loop.
+
+```
+eval/results/
+└── spaced-repetition/
+    ├── results.json    # machine-readable scores for every scheduling policy
+    └── scorecard.md    # human-readable comparative table
+```
+
+- **[spaced-repetition/](spaced-repetition/)** — scores SM-2 and alternative schedulers against a hidden ground-truth memory model. Reproduce: `python3 eval/sim/spaced-repetition/benchmark.py`. Methodology: [eval/sim/spaced-repetition/README.md](../sim/spaced-repetition/README.md).
+
+## Behavioral judge runs (roadmap stage 2)
+
+The behavioral suites in [`eval/benchmark/`](../benchmark/) are still scored manually today; current persona scores in [`index.json`](../../index.json) are `self-reported`. When the automated judge harness lands, its runs will be committed here as:
 
 ```
 eval/results/
@@ -12,4 +27,4 @@ eval/results/
         └── traces/         # full conversation per benchmark case
 ```
 
-A score with a published trace is worth more than any badge. Until then, the benchmark suites in [`eval/benchmark/`](../benchmark/) let anyone re-run the cases manually.
+A score with a published trace — or a reproducible simulation — is worth more than any badge.

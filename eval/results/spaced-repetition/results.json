@@ -1,0 +1,92 @@
+{
+  "benchmark": "spaced-repetition-outcome",
+  "version": 1,
+  "generated": "2026-06-16",
+  "harness": "eval/sim/spaced-repetition/benchmark.py",
+  "config": {
+    "horizon_days": 180,
+    "deck_size": 120,
+    "new_per_day": 6,
+    "seeds": 24,
+    "target_r": 0.9,
+    "model": {
+      "s0_base": 10.0,
+      "s0_floor": 2.0,
+      "base_growth": 1.5,
+      "spacing_bonus": 1.6,
+      "s_fail_base": 4.0,
+      "s_fail_floor": 1.0
+    },
+    "deck_seed": 7
+  },
+  "metrics_glossary": {
+    "retention": "mean true retrievability across all cards at the horizon (0-1); higher is better",
+    "reviews_per_card": "total reviews performed per card over the horizon; lower is less work",
+    "lapses_per_card": "times a card was forgotten and had to be relearned; lower is better",
+    "efficiency": "retention / reviews_per_card",
+    "laef_outcome": "efficiency as a percentage of the cheating Oracle's efficiency (0-100)",
+    "pareto_optimal": "true if no other real policy gets higher retention for equal-or-fewer reviews"
+  },
+  "results": [
+    {
+      "scheduler": "oracle",
+      "retention": 0.9287293663347085,
+      "retention_std": 0.005529417577995498,
+      "reviews_per_card": 42.00868055555556,
+      "reviews_per_card_std": 2.307067541994733,
+      "lapses_per_card": 7.582986111111111,
+      "lapses_per_card_std": 0.739453154296938,
+      "efficiency": 0.022108034674083236,
+      "laef_outcome": 100,
+      "pareto_optimal": false
+    },
+    {
+      "scheduler": "target-r90",
+      "retention": 0.8637049315746684,
+      "retention_std": 0.006660324108406114,
+      "reviews_per_card": 43.06527777777777,
+      "reviews_per_card_std": 1.5444113455685906,
+      "lapses_per_card": 9.030902777777778,
+      "lapses_per_card_std": 0.5526633701748512,
+      "efficiency": 0.020055714862249212,
+      "laef_outcome": 91,
+      "pareto_optimal": true
+    },
+    {
+      "scheduler": "leitner",
+      "retention": 0.6922213553575823,
+      "retention_std": 0.012472336799320362,
+      "reviews_per_card": 42.74270833333333,
+      "reviews_per_card_std": 1.353566774175835,
+      "lapses_per_card": 16.744791666666668,
+      "lapses_per_card_std": 0.6983562566676492,
+      "efficiency": 0.01619507472383884,
+      "laef_outcome": 73,
+      "pareto_optimal": true
+    },
+    {
+      "scheduler": "sm2",
+      "retention": 0.724981612637856,
+      "retention_std": 0.015106712256680054,
+      "reviews_per_card": 44.890625,
+      "reviews_per_card_std": 0.8754109897880342,
+      "lapses_per_card": 17.021527777777777,
+      "lapses_per_card_std": 0.4400120780819824,
+      "efficiency": 0.01614995586802046,
+      "laef_outcome": 73,
+      "pareto_optimal": false
+    },
+    {
+      "scheduler": "fixed-1d",
+      "retention": 0.99452752944653,
+      "retention_std": 0.00337330066475608,
+      "reviews_per_card": 170.5,
+      "reviews_per_card_std": 0.0,
+      "lapses_per_card": 3.580208333333333,
+      "lapses_per_card_std": 0.5044582059965148,
+      "efficiency": 0.00583300603780956,
+      "laef_outcome": 26,
+      "pareto_optimal": true
+    }
+  ]
+}

@@ -4,7 +4,7 @@ name: Spaced Repetition Coach
 domain: learning
 role: coach
 status: active
-version: 0.2.0
+version: 0.3.0
 skills:
   - skills/memory/sm2-algorithm.md
   - skills/memory/active-recall.md
@@ -123,6 +123,20 @@ Once I know your goal, I'll help you write your first batch of cards in a format
 
 *Provenance: self-reported — scored by moltpany on 2026-06-12. Community review: pending.*
 *Benchmark suite: [eval/benchmark/spaced-repetition-coach.yaml](../../eval/benchmark/spaced-repetition-coach.yaml)*
+
+### Objective outcome benchmark (auto-evaluated)
+
+Beyond the self-reported persona score above, this agent's *method* is tested objectively. The [spaced-repetition outcome benchmark](../../eval/sim/spaced-repetition/README.md) runs SM-2 against a hidden ground-truth memory model and measures the learning it actually produces, fully reproducibly.
+
+| Scheduling policy | LAEF outcome (0–100) | Retention | Reviews/card |
+|-------------------|---------------------:|----------:|-------------:|
+| `oracle` (cheating ceiling) | 100 | 0.93 | 42.0 |
+| `target-r90` (best deployable) | **91** | 0.86 | 43.1 |
+| **`sm2` (this agent's method)** | **73** | 0.73 | 44.9 |
+| `leitner` | 73 | 0.69 | 42.7 |
+| `fixed-1d` | 26 | 0.99 | 170.5 |
+
+SM-2 is *correct and competitive* — but the benchmark honestly shows a stability-tracking scheduler retains more for the same effort. A future revision of this agent could adopt a target-retention method and move its objective score. That traceable, reproducible gap is exactly what the score is for. Reproduce: `python3 eval/sim/spaced-repetition/benchmark.py`. Full table: [scorecard](../../eval/results/spaced-repetition/scorecard.md).
 
 ## References
 

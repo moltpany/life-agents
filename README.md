@@ -29,6 +29,7 @@ This is not just a list. It is a **registry built for both humans and AI agents*
 - **Personas** (`agents/`) — character, voice, scope boundaries, memory schema, and a self-contained system prompt you can deploy as-is
 - **Skills** (`skills/`) — reusable domain methodology files (algorithms, frameworks, care guides) that agents reference and share
 - **Benchmarks** (`eval/benchmark/`) — behavioral test suites that make quality claims verifiable
+- **Outcome simulations** (`eval/sim/`) — objective, reproducible benchmarks that score an agent's *method* against a ground-truth model, not just its prose
 - **Registry** (`index.json`) — machine-readable index with raw URLs, so an AI assistant can discover and load any agent in one fetch
 
 ---
@@ -96,7 +97,8 @@ life-agents/
 ├── templates/           ← agent + skill file templates
 └── eval/
     ├── benchmark/       ← behavioral test suites per agent
-    └── results/         ← evaluation runs with traces
+    ├── sim/             ← objective outcome simulations (reproducible scoring harnesses)
+    └── results/         ← committed evaluation runs (scores + data)
 ```
 
 ---
@@ -108,7 +110,8 @@ Every agent is scored with the **Life Agents Evaluation Framework (LAEF)** — a
 What makes LAEF different from a star rating:
 
 - **Behavioral benchmarks** — each agent ships with a test suite (`eval/benchmark/`) describing expected behaviors and failure modes, so claims are reproducible
-- **Honest provenance** — every score is labeled `self-reported`, `community-reviewed`, or `auto-evaluated`; current scores are self-reported and await community review
+- **Outcome simulations** — where an agent's method has measurable consequences, an objective benchmark (`eval/sim/`) scores the method itself against a ground-truth model. The first puts SM-2 and rival schedulers against a simulated memory and reports retention vs. effort, fully reproducibly — see the [spaced-repetition scorecard](eval/results/spaced-repetition/scorecard.md)
+- **Honest provenance** — every score is labeled `self-reported`, `community-reviewed`, or `auto-evaluated`; persona scores are self-reported and await community review, while the simulation benchmarks are auto-evaluated today
 - **Score badges**:
 
 ```

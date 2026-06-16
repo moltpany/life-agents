@@ -1,14 +1,14 @@
 {
   "schema": "moltpany/life-agents-v1",
   "collection": "life-agents",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "maintainer": "moltpany",
   "website": "https://moltpany.github.io/",
   "repository": "https://github.com/moltpany/life-agents",
   "raw_base": "https://raw.githubusercontent.com/moltpany/life-agents/main/",
   "evaluation_framework": "LAEF v1.0",
   "llms_txt": "https://raw.githubusercontent.com/moltpany/life-agents/main/llms.txt",
-  "last_updated": "2026-06-12",
+  "last_updated": "2026-06-16",
   "matrix": {
     "domains": ["learning", "creative", "health", "hobbies", "life", "social"],
     "roles": ["coach", "companion", "curator", "steward", "mentor"]
@@ -20,7 +20,7 @@
       "domain": "learning",
       "role": "coach",
       "status": "active",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "description": "Personalized review schedules using the SM-2 algorithm and Ebbinghaus forgetting curve",
       "file": "agents/learning/spaced-repetition-coach.md",
       "raw_url": "https://raw.githubusercontent.com/moltpany/life-agents/main/agents/learning/spaced-repetition-coach.md",
@@ -34,6 +34,20 @@
         "badge": "strong",
         "provenance": "self-reported",
         "date": "2026-06-12"
+      },
+      "objective_benchmark": {
+        "id": "spaced-repetition-outcome",
+        "harness": "eval/sim/spaced-repetition/benchmark.py",
+        "results": "eval/results/spaced-repetition/results.json",
+        "scorecard": "eval/results/spaced-repetition/scorecard.md",
+        "measures": "retention-efficiency of the scheduling policy vs a hidden ground-truth memory model",
+        "policy": "sm2",
+        "outcome_score": 73,
+        "best_policy": "target-r90",
+        "best_outcome_score": 91,
+        "provenance": "auto-evaluated",
+        "reproduce": "python3 eval/sim/spaced-repetition/benchmark.py",
+        "date": "2026-06-16"
       },
       "tags": ["learning", "memory", "study", "spaced-repetition", "sm2", "anki"]
     },
